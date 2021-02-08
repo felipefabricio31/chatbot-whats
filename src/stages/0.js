@@ -2,7 +2,7 @@ const cardapio = require("../cardapio");
 const banco = require("../banco");
 
 function execute(user, msg, contato) {
-  let menu = " CARDÁPIO \n\n";
+  let menu = "CARDÁPIO \n";
 
   Object.keys(cardapio.menu).forEach((value) => {
     let element = cardapio.menu[value];
@@ -13,7 +13,7 @@ function execute(user, msg, contato) {
 
   return [
     `Olá ${contato},\n
-    Bem vindo(a) ao atendimento inteligente da Lanchonete CloudQI 😃,\n
+    Bem vindo(a) ao atendimento inteligente da Lanchonete CloudQI 😃, \n
     para fazer o pedido basta enviar o código do produto ‼️`,
     menu,
   ];

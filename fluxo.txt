@@ -1,5 +1,6 @@
--- Boas vindas e apresentar o cadápio 
--- Vendas 
+-- Boas vindas e apresentar opções
+-- Cardapio
+-- Selecionar opção do cardapio 
 -- Resumo 
 -- endereço de entrega 
 -- enceramento
