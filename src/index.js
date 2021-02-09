@@ -5,6 +5,7 @@ const banco = require("./banco");
 const stages = require("./stages");
 
 bot.create().then((client) => start(client));
+
 function start(client) {
   client.onMessage((message) => {
     let resp = stages.step[getStage(message.from)].obj.execute(
@@ -15,8 +16,7 @@ function start(client) {
 
     for (let index = 0; index < resp.length; index++) {
       const element = resp[index];
-      
-      client.sendText("5511946460955@c.us", element)
+      sendMessageUser("5511946460955@c.us", client, element);
     }
   });
 }
@@ -36,4 +36,14 @@ function getStage(user) {
 
     return banco.db[user].stage;
   }
+}
+
+function sendMessageUser(user, client, message){
+  client.sendText(user, message)
+  .then((result) => {
+    //console.log('Sucesso ao enviar mensagem: ', result);
+  })
+  .catch((erro) => {
+    console.error('Erro ao enviar mensagem: ', erro);
+  });
 }

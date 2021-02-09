@@ -1,21 +1,28 @@
 const banco = require("../banco");
+const optionsMenu = require("./optionsMenu");
 
   function execute(user, msg) {
-    let resumo = "*RESUMO DO PEDIDO* \n";
+    let resumo = "*_RESUMO DO PEDIDO_* \n \n";
 
     let total = 0;
     banco.db[user].itens.forEach((value) => {
-      resumo += `${value.id} - ${value.descricao} ------------  ${value.preco} \n`;
+      resumo += `_${value.descricao} ------------ R$ ${value.preco}_ \n`;
 
       total += value.preco;
     });
 
-    resumo += "\n-------------------------\n";
-    resumo += `*Total R$ ${total}*`;
+    resumo += "\n-------------------------------------\n";
+    resumo += `*_Total R$ ${total.toFixed(2)}_* `;
+    
+    resumo += "\n-------------------------------------\n";
 
-    //banco.db[user].stage = 3;
+    //Altera o estado para o menu de opções
+    banco.db[user].stage = 3;
 
-    return [resumo];
+    //Chamar menu para continuação do processo
+    let opcoesMenu = optionsMenu.execute(user, msg);
+    
+    return [resumo + opcoesMenu];
   }
   
 exports.execute = execute;
