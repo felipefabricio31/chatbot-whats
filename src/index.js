@@ -7,8 +7,8 @@ const stages = require("./stages");
 bot.create().then((client) => start(client));
 function start(client) {
   client.onMessage((message) => {
-    let resp = stages.step[getStage("5511946460955@c.us")].obj.execute(
-      "5511946460955@c.us",
+    let resp = stages.step[getStage(message.from)].obj.execute(
+      message.from,
       message.body,
       message.sender.name
     );

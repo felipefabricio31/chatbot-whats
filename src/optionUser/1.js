@@ -9,8 +9,6 @@ function execute(user, msg) {
 
     let menus = menu.execute(user, msg);
     banco.db[user].stage = 6;
-    console.log(menus);
-
     return menus;
   }
 

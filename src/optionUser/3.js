@@ -1,21 +1,35 @@
 const menu = require("./menu");
-const cardapio = require("../cardapio");
+const resumoPedido = require("./resumoPedido");
 const banco = require("../banco");
-const stages = require("../stages");
+const alterarPedido = require("./alterarPedido");
 
 function execute(user, msg) {
+  
+  //Deseja visualizar o cardápio para adicionar novos itens?
   if (msg === "1") {
     let menus = menu.execute(user, msg);
     banco.db[user].stage = 6;
     return menus;
   }
 
+  //Já fez seu pedido e deseja conferir?
   if (msg === "2") {
-    console.log("finalizar");
+    let resumo = resumoPedido.execute(user, msg);
+    return resumo;
+  }
 
-    console.log("finalizar o pedido");
+  //Deseja alterar seu pedido?
+  if (msg === "3") {
+    let alteracao = alterarPedido.execute(user, msg);
+    return alteracao;
+  }
 
-    return "Teste";
+  // Conferiu seu pedido e quer finalizar?
+  if (msg === "4") {
+    
+    console.log("Option 4 em implementação");
+
+    return;
   }
 
 }

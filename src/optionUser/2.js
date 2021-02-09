@@ -1,25 +1,20 @@
 const cardapio = require("../cardapio");
 const banco = require("../banco");
+const optionsMenu = require("./optionsMenu");
+
 
 function execute(user, msg) {
 
-  let addItens = 
-    `*🎉 Item(${cardapio.menu[msg].descricao}) adicionado ao seu carrinho 🎉*
+  //Apresenta a msg de item adicionado ao carrinho
+  let addItem = `*🎉 Item(${cardapio.menu[msg].descricao}) adicionado ao seu carrinho 🎉* \n`;
 
-      Deseja visualizar o cardápio para adicionar novos itens?
-      Digite: 1 🧾
+  console.log("to aqui");
+  //Adiciona o item escolhido ao carrinho
+  banco.db[user].itens.push(cardapio.menu[msg]);
 
-      Já fez seu pedido e deseja conferir?
-      Digite: 2 🛒
+  let opcoesMenu = optionsMenu.execute(user, msg);
 
-      Conferiu seu pedido e quer finalizar?
-      Digite: 3 😋
-    `    
-    banco.db[user].itens.push(cardapio.menu[msg]);
-
-    console.log("Banco --> ", banco.db[user].itens);
-
-  return [addItens];
+  return [addItem + opcoesMenu];
 }
 
 exports.execute = execute;

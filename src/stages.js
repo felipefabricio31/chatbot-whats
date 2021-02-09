@@ -27,6 +27,14 @@ var stages = {
     descricao: "Escolher Item do Menu",
     obj: require("./optionUser/escolherItemMenu"),
   },
+  7: {
+    descricao: "Resumo Pedido",
+    obj: require("./optionUser/resumoPedido"),
+  },
+  8: {
+    descricao: "Alterar Pedido",
+    obj: require("./optionUser/alterarPedido"),
+  },
 };
 
 exports.step = stages;

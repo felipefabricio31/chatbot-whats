@@ -1,4 +1,3 @@
-const menu = require("./menu");
 const banco = require("../banco");
 const addItemCarrinho = require("./2");
 
@@ -6,7 +5,7 @@ const addItemCarrinho = require("./2");
     let itensCarrinho = addItemCarrinho.execute(user, msg);
 
     banco.db[user].stage = 3;
-
+    
     return itensCarrinho;
   }
   
