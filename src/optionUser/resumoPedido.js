@@ -1,5 +1,5 @@
 const banco = require("../banco");
-const optionsMenu = require("./optionsMenu");
+const opcoesMenu = require("./opcoesMenu");
 
   function execute(user, msg) {
     let resumo = "*_RESUMO DO PEDIDO_* \n \n";
@@ -20,9 +20,9 @@ const optionsMenu = require("./optionsMenu");
     banco.db[user].stage = 3;
 
     //Chamar menu para continuação do processo
-    let opcoesMenu = optionsMenu.execute(user, msg);
+    let listaOpcoes = opcoesMenu.execute(user, msg);
     
-    return [resumo + opcoesMenu];
+    return [resumo + listaOpcoes];
   }
   
 exports.execute = execute;

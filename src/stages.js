@@ -1,28 +1,20 @@
 var stages = {
   0: {
     descricao: "Boas Vindas",
-    obj: require("./optionUser/0"),
+    obj: require("./optionUser/boasVindas"),
   },
   1: {
-    descricao: "Cardapio",
-    obj: require("./optionUser/1"),
+    descricao: "Opções Selecionadas",
+    obj: require("./optionUser/opcaoSelecionada"),
   },
   2: {
-    descricao: "Vendas",
-    obj: require("./optionUser/2"),
+    descricao: "Add Produto ao carrinho",
+    obj: require("./optionUser/addProdutoCarrinho"),
   },
   3: {
-    descricao: "Endereço",
-    obj: require("./optionUser/3"),
+    descricao: "Opção Selecionada",
+    obj: require("./optionUser/opcaoSelecionada"),
   },
-  // 4: {
-  //   descricao: "Enceramento",
-  //   obj: require("./optionUser/4"),
-  // },
-  // 5: {
-  //   descricao: "Forma de Pagamento",
-  //   obj: require("./optionUser/5"),
-  // },
   6: {
     descricao: "Escolher Item do Menu",
     obj: require("./optionUser/escolherItemMenu"),

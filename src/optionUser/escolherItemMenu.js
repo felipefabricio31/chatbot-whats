@@ -1,8 +1,8 @@
 const banco = require("../banco");
-const addItemCarrinho = require("./2");
+const addProdutoCarrinho = require("./addProdutoCarrinho");
 
   function execute(user, msg) {
-    let itensCarrinho = addItemCarrinho.execute(user, msg);
+    let itensCarrinho = addProdutoCarrinho.execute(user, msg);
 
     banco.db[user].stage = 3;
     
