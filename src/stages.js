@@ -15,6 +15,10 @@ var stages = {
     descricao: "Opção Selecionada",
     obj: require("./optionUser/opcaoSelecionada"),
   },
+  4: {
+    descricao: "Opção Selecionada na Alteracao do Pedido",
+    obj: require("./optionUser/opcaoSelecionadaAlterarPedido"),
+  },
   6: {
     descricao: "Escolher Item do Menu",
     obj: require("./optionUser/escolherItemMenu"),
