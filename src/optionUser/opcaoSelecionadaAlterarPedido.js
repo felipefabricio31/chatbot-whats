@@ -1,47 +1,54 @@
-  const menu = require("./menu");
-const resumoPedido = require("./resumoPedido");
 const banco = require("../banco");
-const alterarPedido = require("./alterarPedido");
+const opcoesMenu = require("./opcoesMenu");
+const resumoPedido = require("./resumoPedido");
+
 
 function execute(user, msg) {
-  console.log("Antes  --> ", banco.db[user].itens);
-
-  delete banco.db[user].itens[parseInt(msg) -1];
-
-  banco.db[user].stage = 3;
-
-
-
-  //Deseja visualizar o cardápio para adicionar novos itens?
-  // if (msg === "1") {
-  //   let menus = menu.execute(user, msg);
-  //   banco.db[user].stage = 6;
-  //   return menus;
-  // }
+  
+  console.log("OPCAO INFORMADA --> ", banco.db[user].itens[msg]);
 
   // //Apresenta o pedido para conferência
-  // if (!cardapio.menu[msg]) {
-  //   return [
-  //     "Código inválido 😭, digite corretamente para concluir ou realizar seu pedido. 🥳"
-  //   ];
-  // }
-
-  console.log("Depois  --> ", banco.db[user].itens);
-
-
-  return console.log("Verificar");
-}
-
-function removerPorId(array, id) {
-  var result = array.filter(function(el) {
-    return el.id == id;
-  });
-    
-  for(var elemento of result){
-    var index = array.indexOf(elemento);    
-    array.splice(index, 1);
+  if (banco.db[user].itens[msg] === undefined) {
+    return [
+      `*Código inválido* 😭. Por favor, *digite umas das opções listadas* para remover o item do seu carrinho. 😭
+        
+      Eiiii, deseja voltar para o menu anterior? 
+      *digite #*
+      `
+    ];
   }
+
+  //Voltar para o menu anterior
+  if(msg === '#')
+  {
+    //Retorna o resumo e a lista de opções do menu
+    let resumoCarrinho = resumoPedido.execute(user, msg);
+    return [msgRemocao + resumoCarrinho];
+  }
+
+  //Apresenta a descricao do produto que será removido
+  //parseInt(msg) - 1 = Opção que o usuario digitou - 1, porque o indice inicia na posição 0
+  let produtoRemovido = banco.db[user].itens[msg].descricao;
+
+  //Deleta do array o item selecionado pelo usuário
+  removeu = delete banco.db[user].itens[msg];
+
+  console.log("Depois --> ", banco.db[user].itens);
+
+  if(removeu){
+    let msgRemocao = `*🎉 Item(${produtoRemovido}) removido do seu carrinho 🎉* \n`;
+    msgRemocao += "\n----------------------------------------------\n";
+
+    //Retorna o resumo e a lista de opções do menu
+    let resumoCarrinho = resumoPedido.execute(user, msg);
+    
+    return [msgRemocao + resumoCarrinho];
+  }
+  else
+  {
+    let msgRemocao = `*🎉 Erro ao remover o item (${produtoRemovido}). Por favor, tente novamente. 🎉* \n`;
+  }  
 }
- 
+
 
 exports.execute = execute;

@@ -3,16 +3,16 @@
     let addItens = 
     `
       Deseja visualizar o cardápio para adicionar novos itens?
-      Digite: 1 🧾➕
+      *Digite: 1* 🧾➕
 
       Já fez seu pedido e deseja conferir?
-      Digite: 2 🛒
+      *Digite: 2* 🛒
 
-      Deseja alterar seu pedido?
-      Digite: 3 📝
+      Deseja remover itens do seu pedido?
+      *Digite: 3* 📝
 
       Conferiu seu pedido e quer finalizar?
-      Digite: 4 😋
+      *Digite: 4* 😋
     `    
   return [addItens];
   }

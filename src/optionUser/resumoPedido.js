@@ -2,27 +2,43 @@ const banco = require("../banco");
 const opcoesMenu = require("./opcoesMenu");
 
   function execute(user, msg) {
-    let resumo = "*_RESUMO DO PEDIDO_* \n \n";
-
-    let total = 0;
-    banco.db[user].itens.forEach((value) => {
-      resumo += `_${value.descricao} ------------ R$ ${value.preco}_ \n`;
-
-      total += value.preco;
-    });
-
-    resumo += "\n-------------------------------------\n";
-    resumo += `*_Total R$ ${total.toFixed(2)}_* `;
     
-    resumo += "\n-------------------------------------\n";
+    //Lista todos os produtos do carrinho
+    let resumoCarrinho = resumoCarrinhoBD(user, msg);
+    
+    //Chamar menu para continuação do processo
+    let listaOpcoes = opcoesMenu.execute(user, msg);
 
     //Altera o estado para o menu de opções
     banco.db[user].stage = 3;
 
-    //Chamar menu para continuação do processo
-    let listaOpcoes = opcoesMenu.execute(user, msg);
+    return [resumoCarrinho + listaOpcoes];
+  }
+
+  //Lista todos os produtos do carrinho
+  function resumoCarrinhoBD(user, msg) {
+    let resumo = "\n*_RESUMO DO PEDIDO_* \n \n";
+
+    let total = 0;
+    let index = 0;
+    banco.db[user].itens.forEach((value) => {
+      resumo += `_*${index}*   -${value.descricao} ------------ R$ ${value.preco}_ \n`;
+
+      total += value.preco;
+
+      index++;
+    });
+
+    if(banco.db[user].itens.length === 0){
+      resumo += `_* Seu carrinho está vazio, estou ansioso para matar sua FOME haha'? 😎 *_ \n`;
+    }
+
+    resumo += "\n----------------------------------------------\n";
+    resumo += `*_Total R$ ${total.toFixed(2)}_* `;
     
-    return [resumo + listaOpcoes];
+    resumo += "\n----------------------------------------------\n";
+    
+    return [resumo];
   }
   
-exports.execute = execute;
+module.exports = { execute, resumoCarrinhoBD };
