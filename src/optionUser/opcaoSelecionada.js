@@ -34,7 +34,7 @@ function execute(user, msg) {
   //Apresenta o pedido para conferência
   if (!cardapio.menu[msg]) {
     return [
-      "Código inválido 😭, digite corretamente para concluir ou realizar seu pedido. 🥳"
+    "Código inválido 😭, digite corretamente para concluir ou realizar seu pedido. 🥳"
     ];
   }
 

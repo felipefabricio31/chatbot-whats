@@ -6,21 +6,24 @@ function execute(user, msg, contato) {
 
   return [
     `
-      *Olá* ${contato},
-      Bem vindo(a) ao atendimento inteligente da Lanchonete CloudQI 😃,
+*Olá* ${contato},
+Bem vindo(a) ao atendimento inteligente da Lanchonete CloudQI 😃,
 
-      *Deseja realizar um pedido?*
-      Digite: 1 🧾
+*- Deseja realizar um pedido?*
+Digite: 1 🧾
 
-      *Já fez seu pedido e deseja conferir?*
-      Digite: 2 🛒
+*- Já fez seu pedido e deseja conferir?*
+Digite: 2 🛒
 
-      *Conferiu seu pedido e quer finalizar?*
-      Digite: 3 😋
+*- Conferiu seu pedido e quer finalizar?*
+Digite: 3 😋🤑
 
-      Depois é só aguardar ⏱️ a confirmação do endereço e aproveitar seu pedido‼️
+*- Deseja cancelar seu pedido?*
+Digite: 5 😭
 
-      *Agradecemos à preferência, bom apetite❕*
+Depois é só aguardar ⏱️ a confirmação do endereço e aproveitar seu pedido‼️
+
+*Agradecemos à preferência, bom apetite❕*
     `
   ];
 }
