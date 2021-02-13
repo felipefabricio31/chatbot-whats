@@ -30,7 +30,8 @@ const opcoesMenu = require("./opcoesMenu");
     });
 
     if(banco.db[user].itens.length === 0){
-      resumo += `_* Seu carrinho está vazio, estou ansioso para matar sua FOME haha'? 😎 *_ \n`;
+      resumo += `_* Seu carrinho está vazio, estou ansioso para matar sua FOME haha' 😎
+      BORAAAA COMPRAR? 😍 *_ \n`;
     }
 
     resumo += "\n----------------------------------------------\n";
