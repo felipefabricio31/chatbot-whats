@@ -30,24 +30,28 @@ function execute(user, msg) {
   //parseInt(msg) - 1 = Opção que o usuario digitou - 1, porque o indice inicia na posição 0
   let produtoRemovido = banco.db[user].itens[msg].descricao;
 
+  let qtdItensAntesRemocao = banco.db[user].itens.length;
+
   //Deleta do array o item selecionado pelo usuário
-  removeu = delete banco.db[user].itens[msg];
+  banco.db[user].itens.splice(parseInt(msg), 1);
 
-  console.log("Depois --> ", banco.db[user].itens);
+  let qtdItensDepoisRemocao = banco.db[user].itens.length;
 
-  if(removeu){
-    let msgRemocao = `*🎉 Item(${produtoRemovido}) removido do seu carrinho 🎉* \n`;
-    msgRemocao += "\n----------------------------------------------\n";
+  //Retorna o resumo e a lista de opções do menu
+  let resumoCarrinho = resumoPedido.execute(user, msg);
+  let msgRemocao = '';
 
-    //Retorna o resumo e a lista de opções do menu
-    let resumoCarrinho = resumoPedido.execute(user, msg);
-    
-    return [msgRemocao + resumoCarrinho];
+  if(qtdItensAntesRemocao > qtdItensDepoisRemocao){
+    msgRemocao = `*🎉 Item(${produtoRemovido}) removido do seu carrinho 🎉* \n`;
   }
   else
   {
-    let msgRemocao = `*🎉 Erro ao remover o item (${produtoRemovido}). Por favor, tente novamente. 🎉* \n`;
+    msgRemocao = `*🎉Erro ao remover o item (${produtoRemovido}). Por favor, tente novamente. 🎉* \n`;
   }  
+
+  msgRemocao += "\n----------------------------------------------\n";
+
+  return [msgRemocao + resumoCarrinho];
 }
 
 
