@@ -13,6 +13,9 @@
 
 - Conferiu seu pedido e quer finalizar?
 *Digite: 4* 😋
+
+- Deseja cancelar seu pedido?
+*Digite: 5* 😭
     `    
   return [addItens];
   }

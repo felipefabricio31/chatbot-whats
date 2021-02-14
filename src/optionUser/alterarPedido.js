@@ -8,8 +8,8 @@ const resumoPedido = require("./resumoPedido");
 
     let opcaoDesejada = "\n----------------------------------------------\n";
 
-    opcaoDesejada += `*😔 Informe o item que deseja remover do seu pedido. 😭*`;
-    opcaoDesejada += `*- Digite a opção desejada: 🧐* \n`;
+    opcaoDesejada += `*😔 Para remover um item do seu pedido, informe o código desejado (Exemplo 0). 😭*\n\n`;
+    opcaoDesejada += `*- Digite a opção desejada: 🧐* \n\n`;
     opcaoDesejada += `- Deseja voltar ao menu anterior⁉️
       *Digite #* \n`;
 

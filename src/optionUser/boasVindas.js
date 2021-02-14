@@ -12,14 +12,8 @@ Bem vindo(a) ao atendimento inteligente da Lanchonete CloudQI 😃,
 *- Deseja realizar um pedido?*
 Digite: 1 🧾
 
-*- Já fez seu pedido e deseja conferir?*
-Digite: 2 🛒
-
-*- Conferiu seu pedido e quer finalizar?*
-Digite: 3 😋🤑
-
-*- Deseja cancelar seu pedido?*
-Digite: 5 😭
+*- Deseja falar com um de nossos atendentes?*
+Digite: 6 🛒
 
 Depois é só aguardar ⏱️ a confirmação do endereço e aproveitar seu pedido‼️
 

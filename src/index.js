@@ -1,5 +1,4 @@
 // Supports ES6
-// import { create, Whatsapp } from 'sulla';
 const bot = require("venom-bot");
 const banco = require("./banco");
 const stages = require("./stages");
@@ -38,8 +37,8 @@ function getStage(user) {
   }
 }
 
-function sendMessageUser(user, client, message){
-  client.sendText(user, message)
+function sendMessageUser(user, client, msg){
+  client.sendText(user, msg)
   .then((result) => {
     //console.log('Sucesso ao enviar mensagem: ', result);
   })

@@ -22,7 +22,7 @@ const opcoesMenu = require("./opcoesMenu");
     let total = 0;
     let index = 0;
     banco.db[user].itens.forEach((value) => {
-      resumo += `_*${index}*   -${value.descricao} ------------ R$ ${value.preco}_ \n`;
+      resumo += `_*${index}*   -${value.descricao} ------------ R$ ${value.preco.toFixed(2)}_ \n`;
 
       total += value.preco;
 
@@ -30,8 +30,8 @@ const opcoesMenu = require("./opcoesMenu");
     });
 
     if(banco.db[user].itens.length === 0){
-      resumo += `_* Seu carrinho está vazio, estou ansioso para matar sua FOME haha' 😎
-      BORAAAA COMPRAR? 😍 *_ \n`;
+      resumo += `*Seu carrinho está vazio, estou ansioso para matar sua FOME haha* 😎
+      *_BORAAAA COMPRAR?_* 😍 \n`;
     }
 
     resumo += "\n----------------------------------------------\n";
