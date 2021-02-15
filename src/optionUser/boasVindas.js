@@ -1,4 +1,6 @@
 const banco = require("../banco");
+const infoCliente = require("../informacoesCliente");
+
 
 function execute(user, msg, contato) {
   
@@ -7,17 +9,15 @@ function execute(user, msg, contato) {
   return [
     `
 *Olá* ${contato},
-Bem vindo(a) ao atendimento inteligente da Lanchonete CloudQI 😃,
+Bem vindo(a) ao atendimento inteligente da ${infoCliente.info.NOME_CLIENTE} 😃,
 
-*- Deseja realizar um pedido?*
-Digite: 1 🧾
+*- Deseja realizar pedido e matar sua fome?* 😋
+Digite: *1* 🧾
 
-*- Deseja falar com um de nossos atendentes?*
+*- Deseja falar com um de nossos atendentes?* 🗣
 Digite: 6 🛒
 
-Depois é só aguardar ⏱️ a confirmação do endereço e aproveitar seu pedido‼️
-
-*Agradecemos à preferência, bom apetite❕*
+*_Sua FOME não espera e eu também estou muito ansioso para montar seu pedido, então digite á opção desejada e te aguardo nos próximos passos..._* 😎♥ 
     `
   ];
 }

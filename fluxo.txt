@@ -6,7 +6,21 @@
 -- enceramento
 
 
+- Conferiu seu pedido e quer finalizar?
+Digite: 4 😋
 
+- Abrir resumo do pedido com as opções:
+    - Listar o resumo.
+    - Abaixo do resumo solicitar que o usuário digite o endereço.
 
+    Digitou o endereco? 
+    
+    Enviar para o proximo Passo
+        - Listar o resumo + endereco
+        - abaixo do resumo, solicitar que o usuario informe os meios de pagamento:
+            - Credito
+            - Debito
+            - Dinheiro (Troco pra quanto?)
 
-Alterar Pedido - Passo 8
+    -- Mensagem de agradecimento e que o pedido está sendo montado.
+    

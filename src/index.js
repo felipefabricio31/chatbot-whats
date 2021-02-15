@@ -16,6 +16,7 @@ function start(client) {
     for (let index = 0; index < resp.length; index++) {
       const element = resp[index];
       sendMessageUser("5511946460955@c.us", client, element);
+      //sendMessageUser(message.from, client, element);
     }
   });
 }
