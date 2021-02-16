@@ -33,7 +33,7 @@ function execute(user, msg) {
   cardapio.menu[produtoEscolhido].quantidade = msg;
 
   //Apresenta a msg de item adicionado ao carrinho
-  let addItem = `*🎉 Adicionamos ${msg} - ${descricaoProduto} ao seu carrinho 🎉* \n`;
+  let addItem = `*🎉 Adicionamos _(${msg} - ${descricaoProduto})_ ao seu carrinho 🎉* \n`;
   addItem += `----------------------------------------------------- \n`;
 
   //Adiciona o item escolhido ao carrinho
