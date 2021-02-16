@@ -16,9 +16,9 @@ function execute(user, msg) {
   // //Apresenta o pedido para conferência
   if (banco.db[user].itens[msg] === undefined) {
     return [
-  `*Código inválido* 😭. Por favor, *digite umas das opções listadas* para remover o item do seu carrinho. 😭
+  `*Código inválido*. Por favor, *digite umas das opções listadas* para remover o item do seu carrinho. 😭
     
-  *Deseja voltar ao menu anterior?*
+  *Deseja voltar ao menu anterior❓🥺*
   - Digite: *#*
   `
     ];

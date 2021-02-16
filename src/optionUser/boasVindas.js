@@ -11,13 +11,13 @@ function execute(user, msg, contato) {
 *Olá* ${contato},
 Bem vindo(a) ao atendimento inteligente da ${infoCliente.info.NOME_CLIENTE} 😃,
 
-*- Deseja realizar pedido e matar sua fome?* 😋
-Digite: *1* 🧾
+*- Deseja realizar um pedido e matar sua fome❓* 
+Digite: *1* 😋
 
-*- Deseja falar com um de nossos atendentes?* 🗣
-Digite: 6 🛒
+*- Deseja falar com um de nossos atendentes❓*
+Digite: *6* 📱
 
-*_Sua FOME não espera e eu também estou muito ansioso para montar seu pedido, então digite á opção desejada e te aguardo nos próximos passos..._* 😎♥ 
+*_Sua FOME não espera e eu também estou muito ansioso para montar seu pedido, então digite á opção desejada e te aguardo nos próximos passos..._* 😎❤️ 
     `
   ];
 }

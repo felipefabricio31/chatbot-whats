@@ -20,9 +20,31 @@ const opcoesMenu = require("./opcoesMenu");
     let resumo = "\n*_RESUMO DO PEDIDO_* \n \n";
 
     let total = 0;
+    banco.db[user].itens.forEach((value) => {
+      resumo += `_-  ${value.descricao} -- R$${value.preco.toFixed(2)} -- Qtd: *${value.quantidade}*_ \n`;
+      total += value.preco;
+    });
+
+    if(banco.db[user].itens.length === 0){
+      resumo += `*Seu carrinho está vazio, estou ansioso para matar sua FOME haha* 😎
+      *_BORAAAA COMPRAR❓_*😍 \n`;
+    }
+
+    resumo += "\n----------------------------------------------\n";
+    resumo += `*_Total R$ ${total.toFixed(2)}_* `;
+    
+    resumo += "\n----------------------------------------------\n";
+    
+    return [resumo];
+  }
+
+  function resumoCarrinhoAlterarPedido(user, msg) {
+    let resumo = "\n*_RESUMO DO PEDIDO_* \n \n";
+
+    let total = 0;
     let index = 0;
     banco.db[user].itens.forEach((value) => {
-      resumo += `_Cód: *${index}*  ----  ${value.descricao} ---- R$${value.preco.toFixed(2)} ---- Qtd: *${value.quantidade}*_ \n`;
+      resumo += `_Cód: *${index}*  --  ${value.descricao} -- R$${value.preco.toFixed(2)} -- Qtd: *${value.quantidade}*_ \n`;
 
       total += value.preco;
 
@@ -31,7 +53,7 @@ const opcoesMenu = require("./opcoesMenu");
 
     if(banco.db[user].itens.length === 0){
       resumo += `*Seu carrinho está vazio, estou ansioso para matar sua FOME haha* 😎
-      *_BORAAAA COMPRAR?_* 😍 \n`;
+      *_BORAAAA COMPRAR❓_*😍 \n`;
     }
 
     resumo += "\n----------------------------------------------\n";
@@ -42,4 +64,4 @@ const opcoesMenu = require("./opcoesMenu");
     return [resumo];
   }
   
-module.exports = { execute, resumoCarrinhoBD };
+module.exports = { execute, resumoCarrinhoBD, resumoCarrinhoAlterarPedido };

@@ -19,7 +19,7 @@ function execute(user, msg) {
   
   -----------------------------------------------------
 
-  *Deseja voltar ao menu anterior?* 
+  *Deseja voltar ao menu anterior❓* 
   - Digite: *#*
       `
     ];
