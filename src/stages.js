@@ -39,6 +39,14 @@ var stages = {
     descricao: "Agradecimentos ao Cliente",
     obj: require("./optionUser/agradecimentos"),
   },
+  10: {
+    descricao: "Finalizar Pedido",
+    obj: require("./optionUser/finalizarPedido/finalizarPedido"),
+  },
+  11: {
+    descricao: "Informar Endereço",
+    obj: require("./optionUser/finalizarPedido/informarEndereco"),
+  },
 };
 
 exports.step = stages;

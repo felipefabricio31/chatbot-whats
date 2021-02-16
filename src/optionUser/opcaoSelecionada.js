@@ -3,6 +3,7 @@ const resumoPedido = require("./resumoPedido");
 const banco = require("../banco");
 const alterarPedido = require("./alterarPedido");
 const cancelarPedido = require("./cancelamentoPedido");
+const finalizarPedido = require("./finalizarPedido/finalizarPedido");
 
 function execute(user, msg) {
 
@@ -29,8 +30,8 @@ function execute(user, msg) {
   // Conferiu seu pedido e quer finalizar?
   if (msg === "4") {
     console.log("Opção 4 em implementação");
-
-    return;
+    let fecharPedido = finalizarPedido.execute(user, msg);
+    return fecharPedido;
   }
   
   // Deseja cancelar seu pedido?
