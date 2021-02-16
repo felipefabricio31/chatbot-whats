@@ -22,7 +22,7 @@ const opcoesMenu = require("./opcoesMenu");
     let total = 0;
     let index = 0;
     banco.db[user].itens.forEach((value) => {
-      resumo += `_*Cód:${index}*   -${value.descricao} ---- R$ ${value.preco.toFixed(2)} ---- Qtd: ${value.quantidade}_ \n`;
+      resumo += `_Cód:*${index}*  ----  ${value.descricao} ---- R$${value.preco.toFixed(2)} ---- Qtd:*${value.quantidade}*_ \n`;
 
       total += value.preco;
 

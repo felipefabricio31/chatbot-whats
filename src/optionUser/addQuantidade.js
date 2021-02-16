@@ -1,8 +1,29 @@
 const cardapio = require("../cardapio");
 const banco = require("../banco");
 const opcoesMenu = require("./opcoesMenu");
+const resumoPedido = require("./resumoPedido");
 
 function execute(user, msg) {
+
+  if(msg === "#" || msg === "*"){
+    //Retorna o resumo e a lista de opções do menu
+    let resumoCarrinho = resumoPedido.execute(user, msg);
+    return resumoCarrinho;
+  }
+
+  //isNaN para saber se a string contém somente números, se for falso significa que é um número:
+  if(isNaN(msg))
+  {
+    return [
+  `*Digito inválido* 😭. Por favor, *digite um número* para adicionar o produto ao seu carrinho.😭
+  
+  -----------------------------------------------------
+
+  *Deseja voltar ao menu anterior?* 
+  - Digite: *#*
+      `
+    ];
+  }
 
   let produtoEscolhido = banco.db[user].produtoEscolhido;
 

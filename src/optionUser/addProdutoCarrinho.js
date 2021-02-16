@@ -3,8 +3,12 @@ const banco = require("../banco");
 
 function execute(user, msg) {
   //Apresenta a msg de item adicionado ao carrinho
-  let addItem = `*Digite a quantidade para continuar:* \n`;
-  
+  let addItem = `*- Digite a quantidade para continuar:* \n\n`;
+
+  addItem += `----------------------------------------------\n`;
+
+  addItem += `*Deseja voltar ao menu anterior❓*\n`;
+  addItem += `Digite: *#* \n`;
 
   banco.db[user].produtoEscolhido = msg;
   
