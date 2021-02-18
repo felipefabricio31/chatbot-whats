@@ -47,6 +47,26 @@ var stages = {
     descricao: "Informar Endereço",
     obj: require("./optionUser/finalizarPedido/informarEndereco"),
   },
+  12: {
+    descricao: "Texto da Observacao do Pedido",
+    obj: require("./optionUser/finalizarPedido/textoObservacaoPedido"),
+  },
+  13: {
+    descricao: "Observacao Digitada",
+    obj: require("./optionUser/finalizarPedido/observacaoDigitada"),
+  },
+  14: {
+    descricao: "Texto Forma pagamento",
+    obj: require("./optionUser/finalizarPedido/textoFormaPagamento"),
+  },
+  15: {
+    descricao: "Forma pagamento Digitada",
+    obj: require("./optionUser/finalizarPedido/formaPagamentoDigitada"),
+  },
+  16: {
+    descricao: "Troco Forma pagamento",
+    obj: require("./optionUser/finalizarPedido/observacaoDigitada"),
+  },
 };
 
 exports.step = stages;

@@ -11,7 +11,7 @@
 - Deseja remover itens do seu pedido❓
 *Digite: 3* 📝⛔️
 
-- Conferiu seu pedido e quer finalizar❓
+- Conferir pedido e finalizar❓
 *Digite: 4* 😋🤑
 
 - Deseja cancelar seu pedido❓

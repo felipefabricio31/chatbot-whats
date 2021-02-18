@@ -1,35 +1,43 @@
+const util = require("../../util");
 const resumoPedido = require("../resumoPedido");
+const observacao = require("./textoObservacaoPedido");
+const banco = require("../../banco");
 
-function execute(user, msg) {
+function execute(user, msg) 
+{
+  let numeroCaracteresMinimoEndereco = 15;
+  //inicializa
+  banco.db[user].endereco = '';
   
-  //Retorna o resumo e a lista de opções do menu
-  let resumoCarrinho = resumoPedido.resumoCarrinhoBD(user, msg);
-
   //Voltar para o menu anterior
   if(msg === '#')
   {
-    return resumoPedido.execute(user, msg);;
+    return resumoPedido.execute(user, msg);
   }
 
-  let endereco = "\n *Endereço:* "
+  //validação básica(provisória), interessante incluir uma validação de endereco por CEP
+  //ou analisar uma melhor alternativa
+  let campoValido = util.metodos.validarQtdCaracteres(numeroCaracteresMinimoEndereco, msg);
+  if(!campoValido)
+  {
+    return ['*_Endereço inválido, você precisa informar um endereço com mais de 15 caracteres. Por favor, digite novamente._*'];
+  }
 
-  endereco += removerAcento(msg);
+  let endereco = "\n *Endereço:* ";
+  endereco += util.metodos.removerAcento(msg);
+  //Add endereco ao banco de dados
+  banco.db[user].endereco = endereco;
 
-  return [resumoCarrinho + endereco];
+  console.log("Passou");
+
+  //Separar em outra msg
+  //Retorna o texto da observação
+  let textoObs = observacao.textoObservacao(user, msg);
+
+  //Retorna o resumo e a lista de opções do menu
+  let resumoCarrinho = resumoPedido.resumoCarrinhoBD(user, msg);
+
+  return [resumoCarrinho + endereco + textoObs];
 }
-
-
-function removerAcento (text)
-{       
-    text = text.toUpperCase();                                                         
-    text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
-    text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
-    text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
-    text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
-    text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
-    text = text.replace(new RegExp('[Ç]','gi'), 'c');
-    return text;                 
-}
-
 
 exports.execute = execute;

@@ -38,6 +38,29 @@ const opcoesMenu = require("./opcoesMenu");
     return [resumo];
   }
 
+  //Lista todos os produtos do carrinho
+  function resumoCarrinhoCompleto(user, msg) {
+  
+    //Retorna a lista produtos que estão no carrinho
+    let carrinhoPedido = resumoCarrinhoBD(user, msg);
+
+    //Retorna o endereço informado pelo cliente
+    let endereco = "\n *Endereço:* "
+    endereco += banco.db[user].endereco;
+    endereco += "\n ---------------------------------------------- \n";
+
+    //Retorna a forma de pagamento informado pelo cliente
+    let formaPagamento = "\n *Forma de Pagamento:* "
+    formaPagamento += banco.db[user].formaPagamento;
+    formaPagamento += "\n ---------------------------------------------- \n";
+
+    //Retorna o endereço informado pelo cliente
+    let observacao = "\n *Observação:* "
+    observacao += banco.db[user].observacao;
+    
+    return [carrinhoPedido + endereco + formaPagamento + observacao];
+  }
+  
   function resumoCarrinhoAlterarPedido(user, msg) {
     let resumo = "\n*_RESUMO DO PEDIDO_* \n \n";
 
@@ -64,4 +87,4 @@ const opcoesMenu = require("./opcoesMenu");
     return [resumo];
   }
   
-module.exports = { execute, resumoCarrinhoBD, resumoCarrinhoAlterarPedido };
+module.exports = { execute, resumoCarrinhoBD, resumoCarrinhoAlterarPedido, resumoCarrinhoCompleto };

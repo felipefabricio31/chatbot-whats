@@ -5,9 +5,7 @@ function execute(user, msg) {
     //lista todos os produtos que estão no carrinho
     let resumo = resumoPedido.resumoCarrinhoBD(user, msg);
 
-    let opcaoDesejada = "\n----------------------------------------------\n";
-
-    opcaoDesejada += `*Por favor, digite o seu endereço completo*\n
+    let opcaoDesejada = `*Por favor, digite o seu endereço completo*\n
     Nome da Rua:
     Bairro:
     Número da residência:

@@ -3,7 +3,7 @@ const cardapio = require("../cardapio");
 function execute(user, msg) {
 
   let menu = "*Atenção*‼️ \n"; 
-  menu += "⚠️ *Para adicionar um item ao seu pedido, digite uma das opções abaixo:* ⚠️\n\n";
+  menu += "⚠️ *Para adicionar um item ao seu pedido, digite uma das opções abaixo:* \n\n";
   menu += "*--🟢 MENU DE OPÇÕES 🟢--* \n\n";
 
     Object.keys(cardapio.menu).forEach((value) => {
