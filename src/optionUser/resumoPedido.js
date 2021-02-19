@@ -45,12 +45,11 @@ const opcoesMenu = require("./opcoesMenu");
     let carrinhoPedido = resumoCarrinhoBD(user, msg);
 
     //Retorna o endereço informado pelo cliente
-    let endereco = "\n *Endereço:* "
-    endereco += banco.db[user].endereco;
+    let endereco = banco.db[user].endereco;
     endereco += "\n ---------------------------------------------- \n";
 
     //Retorna a forma de pagamento informado pelo cliente
-    let formaPagamento = "\n *Forma de Pagamento:* "
+    let formaPagamento = "\n *Forma de Pagamento:*"
     formaPagamento += banco.db[user].formaPagamento;
     formaPagamento += "\n ---------------------------------------------- \n";
 

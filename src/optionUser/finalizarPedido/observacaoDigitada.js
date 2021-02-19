@@ -4,19 +4,12 @@ const util = require("../../util");
 const banco = require("../../banco");
 
 function execute(user, msg) {
+  
   //Voltar para o menu anterior
-  if(msg === '#' || msg === '*')
-  {
-    return resumoPedido.execute(user, msg);
-  }
-
-  //Voltar para o menu anterior
-  if(msg === '1')
+  if(msg === '1' || msg === '#' || msg === '*')
   {
     banco.db[user].observacao = '';
-
-    //observacaoDigitada.js
-    banco.db[user].stage = 5;
+    return resumoPedido.execute(user, msg);
   }
   else
   {

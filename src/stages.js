@@ -62,6 +62,14 @@ var stages = {
   15: {
     descricao: "Forma pagamento Digitada",
     obj: require("./optionUser/finalizarPedido/formaPagamentoDigitada"),
+  },
+  16: {
+    descricao: "Texto Troco Dinheiro",
+    obj: require("./optionUser/finalizarPedido/textoTrocoDinheiro"),
+  },
+  17: {
+    descricao: "Troco Dinheiro Digitado",
+    obj: require("./optionUser/finalizarPedido/opcaoDigitadaTrocoDinheiro"),
   }
 };
 
