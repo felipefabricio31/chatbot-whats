@@ -28,14 +28,14 @@ function execute(user, msg)
   //Add endereco ao banco de dados
   banco.db[user].endereco = endereco;
 
-  console.log("Passou");
-
   //Separar em outra msg
   //Retorna o texto da observação
   let textoObs = observacao.textoObservacao(user, msg);
 
   //Retorna o resumo e a lista de opções do menu
   let resumoCarrinho = resumoPedido.resumoCarrinhoBD(user, msg);
+  
+  console.log("Fim informar endereco");
 
   return [resumoCarrinho + endereco + textoObs];
 }

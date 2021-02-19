@@ -62,11 +62,7 @@ var stages = {
   15: {
     descricao: "Forma pagamento Digitada",
     obj: require("./optionUser/finalizarPedido/formaPagamentoDigitada"),
-  },
-  16: {
-    descricao: "Troco Forma pagamento",
-    obj: require("./optionUser/finalizarPedido/observacaoDigitada"),
-  },
+  }
 };
 
 exports.step = stages;

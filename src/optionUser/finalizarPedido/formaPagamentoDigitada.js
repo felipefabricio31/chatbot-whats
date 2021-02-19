@@ -1,5 +1,6 @@
 const resumoPedido = require("../resumoPedido");
 const util = require("../../util");
+const banco = require("../../banco");
 
 function OpcaoDigitadaObservacao(user, msg) {
 
@@ -9,15 +10,24 @@ function OpcaoDigitadaObservacao(user, msg) {
     return resumoPedido.execute(user, msg);;
   }
 
-  banco.db[user].observacao = '';
-
   //Voltar para o menu anterior
   if(msg === '1')
   {
-    return resumoPedido.execute(user, msg);;
+    banco.db[user].formaPagamento = '';
+
+    //observacaoDigitada.js
+    banco.db[user].stage = 5;
+  }
+  else
+  {
+    banco.db[user].formaPagamento = util.metodos.removerAcento(msg);
   }
 
-  //Chamar forma de pagamento
+  if(msg === '3')
+  {
+    //chamar opcao para digitar troco
+    //return textoTroco
+  }
 
   //retornar forma de pagamento
   return [];

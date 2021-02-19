@@ -1,23 +1,31 @@
 const resumoPedido = require("../resumoPedido");
-const textoFp = require("./textoFormaPagamento");
+const textoFormaPag = require("./textoFormaPagamento");
 const util = require("../../util");
 const banco = require("../../banco");
 
-function OpcaoDigitadaObservacao(user, msg) {
-
+function execute(user, msg) {
   //Voltar para o menu anterior
   if(msg === '#' || msg === '*')
   {
     return resumoPedido.execute(user, msg);
   }
 
-  banco.db[user].observacao = '';
-
   //Voltar para o menu anterior
-  if(msg !== '1')
-    banco.db[user].observacao = util.metodos.removerAcento(msg);
+  if(msg === '1')
+  {
+    banco.db[user].observacao = '';
 
-  return textoFp.textoFormaPagamento(user, msg);
+    //observacaoDigitada.js
+    banco.db[user].stage = 5;
+  }
+  else
+  {
+    banco.db[user].observacao = util.metodos.removerAcento(msg);
+  }
+  
+  let textoFp = textoFormaPag.textoFormaPagamento(user, msg);
+
+  return textoFp;
 }
 
-exports.metodos = OpcaoDigitadaObservacao;
+exports.execute = execute;
