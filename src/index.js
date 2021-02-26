@@ -3,20 +3,29 @@ const bot = require("venom-bot");
 const banco = require("./banco");
 const stages = require("./stages");
 
-bot.create().then((client) => start(client));
+bot
+  .create()
+  .then((client) => start(client))
+  .catch((erro) => {
+    console.log(erro);
+  });
 
 function start(client) {
   client.onMessage((message) => {
-    let resp = stages.step[getStage(message.from)].obj.execute(
-      message.from,
-      message.body,
-      message.sender.name
-    );
+    if(message.isGroupMsg === false)
+    {
+      let resp = stages.step[getStage(message.from)].obj.execute(
+        message.from,
+        message.body,
+        message.sender.name
+      );
 
-    for (let index = 0; index < resp.length; index++) {
-      const element = resp[index];
-      // sendMessageUser("5511946460955@c.us", client, element);
-      sendMessageUser(message.from, client, element);
+      sendMessageUser("5511946460955@c.us", client, resp, true);
+      //sendMessageUser(message.from, client, element, true);
+
+      //sendMessageUser("5511946460955@c.us", client, element, true);
+      //sendMessageUser(message.from, client, element, true);
+
     }
   });
 }
@@ -38,12 +47,16 @@ function getStage(user) {
   }
 }
 
-function sendMessageUser(user, client, msg){
-  client.sendText(user, msg)
-  .then((result) => {
-    //console.log('Sucesso ao enviar mensagem: ', result);
-  })
-  .catch((erro) => {
-    console.error('Erro ao enviar mensagem: ', erro);
-  });
+function sendMessageUser(user, client, msg, sendOptionsMessage){
+//Percorre o array para enviar msgs separadas
+  msg.forEach( item => {
+    //enviar msg
+      client.sendText(user, item.texto)
+      .then((result) => {
+        //console.log('Sucesso ao enviar mensagem: ', result);
+      })
+      .catch((erro) => {
+        console.error('Erro ao enviar mensagem: ', erro);
+      });
+  } );
 }
