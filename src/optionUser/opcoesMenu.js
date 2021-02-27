@@ -1,9 +1,7 @@
 
   function execute(user, msg) {
     
-    let arrayMsgRetorno = [];
-
-    arrayMsgRetorno.push({texto: `
+    let opcoes = `
     *1* - Para visualizar o cardápio e adicionar novos itens 🧾♻️
     
     *2* - Já fez seu pedido e deseja conferir 🛒✅
@@ -13,9 +11,9 @@
     *4* - Conferir pedido e finalizar 😋🤑
     
     *5* - Para cancelar seu pedido 😭❌
-    ` });
+    `;
 
-    return arrayMsgRetorno;
+    return opcoes;
   }
   
 exports.execute = execute;

@@ -4,31 +4,33 @@ const resumoPedido = require("./resumoPedido");
 
   function execute(user, msg) {
 
-    console.log("Opcao selecionada", msg);
+    console.log("Opcao selecionada (escolherItemMenu)", msg);
+    let arrayMsgRetorno = [];
 
     if(msg === "#" || msg === "*"){
       //Retorna o resumo e a lista de opções do menu
-      let resumoCarrinho = resumoPedido.execute(user, msg);
-      return resumoCarrinho;
+      let arrayMsgRetornoMenu  = resumoPedido.execute(user, msg);
+      return arrayMsgRetornoMenu;
     }
 
     //isNaN para saber se a string contém somente números, se for falso significa que é um número:
     if(isNaN(msg))
     {
-      return [
-    `*Digito inválido*. Por favor, *digite umas das opções listadas* para adicionar o item ao seu carrinho.😭
+      let msgRetorno = `*Digito inválido*. Por favor, *digite umas das opções listadas* para adicionar o item ao seu carrinho.😭
     
-  --------------------------------------------------------
+      --------------------------------------------------------
+    
+      *#* - Deseja voltar ao menu anterior 🥺`;
 
-  *Deseja voltar ao menu anterior❓*🥺 
-  - Digite: *#*
-        `
-      ];
+      //Add item ao array
+      arrayMsgRetorno.push({texto: msgRetorno});
+
+      return arrayMsgRetorno;
     }
 
-    let itensCarrinho = addProdutoCarrinho.execute(user, msg);
+    let arrayRetornoItensCarrinho = addProdutoCarrinho.execute(user, msg);
     
-    return itensCarrinho;
+    return arrayRetornoItensCarrinho;
   }
   
 exports.execute = execute;

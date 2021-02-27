@@ -11,7 +11,7 @@ function execute(user, msg) {
       menu += `${value} - ${element.descricao} - R$ ${element.preco} \n`;
     });
     
-    return [menu];
+    return menu;
 }
 
 exports.execute = execute;

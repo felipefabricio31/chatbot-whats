@@ -1,27 +1,29 @@
 const banco = require("../banco");
-const opcoesMenu = require("./opcoesMenu");
 const resumoPedido = require("./resumoPedido");
 
-
 function execute(user, msg) {
+  let arrayMsgRetorno = [];
     
   //Voltar para o menu anterior
   if(msg === '#')
   {
     //Retorna o resumo e a lista de opções do menu
-    let resumoCarrinho = resumoPedido.execute(user, msg);
-    return resumoCarrinho;
+    let arrayMsgRetorno = resumoPedido.execute(user, msg);
+    return arrayMsgRetorno;
   }
 
   // //Apresenta o pedido para conferência
   if (banco.db[user].itens[msg] === undefined) {
-    return [
-  `*Código inválido*. Por favor, *digite umas das opções listadas* para remover o item do seu carrinho. 😭
+    let codInvalido = `*Código inválido*. Por favor, *digite umas das opções listadas* para remover o item do seu carrinho. 😭
     
-  *Deseja voltar ao menu anterior❓🥺*
-  - Digite: *#*
-  `
-    ];
+    ---------------------------------------------------
+
+    *#* - Para voltar ao menu anterior🥺*`;
+
+    //Add item ao array
+    arrayMsgRetorno.push({texto:codInvalido});
+
+    return arrayMsgRetorno;
   }
 
   //Apresenta a descricao do produto que será removido
@@ -40,17 +42,17 @@ function execute(user, msg) {
   let msgRemocao = '';
 
   if(qtdItensAntesRemocao > qtdItensDepoisRemocao){
-    msgRemocao = `*🎉 Item(${produtoRemovido}) removido do seu carrinho 🎉* \n`;
+    msgRemocao = `*🎉 Item(${produtoRemovido}) removido do seu carrinho 🎉*`;
   }
   else
   {
-    msgRemocao = `*🎉Erro ao remover o item (${produtoRemovido}). Por favor, tente novamente. 🎉* \n`;
+    msgRemocao = `*🎉 Erro ao remover o item (${produtoRemovido}). Por favor, tente novamente. 🎉*`;
   }  
 
-  msgRemocao += "\n----------------------------------------------\n";
+  //Add item ao array
+  arrayMsgRetorno.push({texto:msgRemocao});
 
-  return [msgRemocao + resumoCarrinho];
+  return arrayMsgRetorno;
 }
-
 
 exports.execute = execute;

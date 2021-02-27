@@ -2,17 +2,22 @@ const banco = require("../banco");
 const opcoesMenu = require("./opcoesMenu");
 
   function execute(user, msg) {
+    let arrayMsgRetorno = [];
     
     //Lista todos os produtos do carrinho
     let resumoCarrinho = resumoCarrinhoBD(user, msg);
+    //Add item ao array
+    arrayMsgRetorno.push({texto:resumoCarrinho});
     
     //Chamar menu para continuação do processo
     let listaOpcoes = opcoesMenu.execute(user, msg);
+    //Add item ao array
+    arrayMsgRetorno.push({texto:listaOpcoes});
 
     //Altera o estado para o menu de opções
     banco.db[user].stage = 3;
 
-    return [resumoCarrinho + listaOpcoes];
+    return arrayMsgRetorno;
   }
 
   //Lista todos os produtos do carrinho
@@ -35,7 +40,7 @@ const opcoesMenu = require("./opcoesMenu");
     
     resumo += "\n----------------------------------------------\n";
     
-    return [resumo];
+    return resumo;
   }
 
   //Lista todos os produtos do carrinho
@@ -57,7 +62,7 @@ const opcoesMenu = require("./opcoesMenu");
     let observacao = "\n *Observação:* "
     observacao += banco.db[user].observacao;
     
-    return [carrinhoPedido + endereco + formaPagamento + observacao];
+    return carrinhoPedido + endereco + formaPagamento + observacao;
   }
   
   function resumoCarrinhoAlterarPedido(user, msg) {
@@ -83,7 +88,7 @@ const opcoesMenu = require("./opcoesMenu");
     
     resumo += "\n----------------------------------------------\n";
     
-    return [resumo];
+    return resumo;
   }
   
 module.exports = { execute, resumoCarrinhoBD, resumoCarrinhoAlterarPedido, resumoCarrinhoCompleto };

@@ -4,25 +4,26 @@ const opcoesMenu = require("./opcoesMenu");
 const resumoPedido = require("./resumoPedido");
 
 function execute(user, msg) {
+  let arrayMsgRetorno = [];
 
   if(msg === "#" || msg === "*"){
     //Retorna o resumo e a lista de opções do menu
-    let resumoCarrinho = resumoPedido.execute(user, msg);
-    return resumoCarrinho;
+    let arrayMsgRetorno  = resumoPedido.execute(user, msg);
+    return arrayMsgRetorno ;
   }
 
   //isNaN para saber se a string contém somente números, se for falso significa que é um número:
   if(isNaN(msg))
   {
-    return [
-  `*Digito inválido* 😭. Por favor, *digite um número* para adicionar o produto ao seu carrinho.😭
+    let codigoInvalido = `*Digito inválido* 😭. Por favor, *digite um número* para adicionar o produto ao seu carrinho.😭
   
-  -----------------------------------------------------
+    -----------------------------------------------------
+  
+    *#* - Para voltar ao menu anterior`;
 
-  *Deseja voltar ao menu anterior❓* 
-  - Digite: *#*
-      `
-    ];
+    arrayMsgRetorno.push({texto:codigoInvalido});
+
+    return arrayMsgRetorno;
   }
 
   let produtoEscolhido = banco.db[user].produtoEscolhido;
@@ -34,18 +35,22 @@ function execute(user, msg) {
 
   //Apresenta a msg de item adicionado ao carrinho
   let addItem = `*🎉 Adicionamos _(${msg} - ${descricaoProduto})_ ao seu carrinho 🎉* \n`;
-  addItem += `----------------------------------------------------- \n`;
+  
+  //Add item ao array
+  arrayMsgRetorno.push({texto:addItem});
 
   //Adiciona o item escolhido ao carrinho
   banco.db[user].itens.push(cardapio.menu[produtoEscolhido]);
 
   //Retorna a lista de opções do menu
   let listaOpcoes = opcoesMenu.execute(user, msg);
+  //Add item ao array
+  arrayMsgRetorno.push({texto:listaOpcoes});
 
   //opcaoSelecionada.js
   banco.db[user].stage = 3;
 
-  return [addItem + listaOpcoes];
+  return arrayMsgRetorno;
 }
 
 exports.execute = execute;

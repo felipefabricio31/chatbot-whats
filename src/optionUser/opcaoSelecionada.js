@@ -7,53 +7,61 @@ const finalizarPedido = require("./finalizarPedido/finalizarPedido");
 
 function execute(user, msg) {
 
+  console.log("Opção selecionada --> ", msg);
+
   //Deseja visualizar o cardápio para adicionar novos itens?
   if (msg === "1") {
     let menus = menu.execute(user, msg);
+    
+    let arrayMsgRetorno = [];
+    arrayMsgRetorno.push({texto: menus});
+
     //Escolher item do menu
     banco.db[user].stage = 6;
-    return menus;
+    
+    return arrayMsgRetorno;
   }
 
   //Já fez seu pedido e deseja conferir?
   if (msg === "2") {
-    let resumo = resumoPedido.execute(user, msg);
-    return resumo;
+    let arrayMsgRetorno = resumoPedido.execute(user, msg);
+    return arrayMsgRetorno;
   }
 
   //Deseja remover itens do seu pedido?
   if (msg === "3") {
-    let alteracao = alterarPedido.execute(user, msg);
-    return alteracao;
+    let arrayMsgRetorno = alterarPedido.execute(user, msg);
+    return arrayMsgRetorno;
   }
 
   // Conferiu seu pedido e quer finalizar?
   if (msg === "4") {
-    console.log("Opção 4 em implementação");
-    let fecharPedido = finalizarPedido.execute(user, msg);
-    return fecharPedido;
+    let arrayMsgRetorno = finalizarPedido.execute(user, msg);
+    return arrayMsgRetorno;
   }
   
   // Deseja cancelar seu pedido?
   if (msg === "5") {
-    let retornoCancelamento = cancelarPedido.execute(user, msg);
-    return retornoCancelamento;
+    let arrayMsgRetorno = cancelarPedido.execute(user, msg);
+    return arrayMsgRetorno;
   }
 
   // Deseja falar com um de nossos atendentes?
   if (msg === "6") {
     console.log("Opção 6 em implementação");
-
     return;
   }
 
   //Apresenta o pedido para conferência
   if (!cardapio.menu[msg]) {
-    return [
-    "Código inválido 😭, digite corretamente para concluir ou realizar seu pedido. 🥳"
-    ];
-  }
+    let codInvalido = "Código inválido 😭, digite corretamente para concluir ou realizar seu pedido. 🥳";
 
+    let arrayMsgRetorno = [];
+    //Add item ao array
+    arrayMsgRetorno.push({texto:codInvalido});
+
+    return arrayMsgRetorno;
+  }
 
   return banco.db[user].stage = 2;
 }
