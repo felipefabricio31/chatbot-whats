@@ -17,14 +17,14 @@ function execute(user, msg)
 
   //validação básica(provisória), interessante incluir uma validação de endereco por CEP
   //ou analisar uma melhor alternativa
-  let campoValido = util.metodos.validarQtdCaracteres(numeroCaracteresMinimoEndereco, msg);
+  let campoValido = util.validarQtdCaracteres(numeroCaracteresMinimoEndereco, msg);
   if(!campoValido)
   {
     return ['*_Endereço inválido, você precisa informar um endereço com mais de 15 caracteres. Por favor, digite novamente._*'];
   }
 
   let endereco = "\n *Endereço:* ";
-  endereco += util.metodos.removerAcento(msg);
+  endereco += util.removerAcento(msg);
   //Add endereco ao banco de dados
   banco.db[user].endereco = endereco;
 

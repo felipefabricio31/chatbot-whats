@@ -22,7 +22,7 @@ function execute(user, msg) {
     else if(msg === "1")
       formaPagEscolhida = 'Dinheiro';
 
-    banco.db[user].formaPagamento = util.metodos.removerAcento(formaPagEscolhida);
+    banco.db[user].formaPagamento = util.removerAcento(formaPagEscolhida);
   }
 
   if(msg === '3')

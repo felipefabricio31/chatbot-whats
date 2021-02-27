@@ -1,5 +1,6 @@
 // Supports ES6
 const bot = require("venom-bot");
+const util = require("./util");
 const banco = require("./banco");
 const stages = require("./stages");
 
@@ -11,7 +12,10 @@ bot
   });
 
 function start(client) {
-  client.onMessage((message) => {
+  client.onMessage(async (message) =>  {
+
+    console.log("MESSAGE (line 17) -->> ", message);
+
     if(message.isGroupMsg === false)
     {
       let resp = stages.step[getStage(message.from)].obj.execute(
@@ -20,14 +24,29 @@ function start(client) {
         message.sender.name
       );
 
-      sendMessageUser("5511946460955@c.us", client, resp, true);
-      //sendMessageUser(message.from, client, element, true);
+      console.log("RESP --> ", resp);
 
-      //sendMessageUser("5511946460955@c.us", client, element, true);
-      //sendMessageUser(message.from, client, element, true);
+      //Percorre o array para enviar msgs separadas
+      await resp.forEach( item => {
+        sendMessageUser("5511946460955@c.us", client, item.texto);
+      } );
 
+      message.body = "AAAAA";
+
+      util.setStageBanco(message.from, resp[0].stage);
     }
   });
+}
+
+function sendMessageUser(user, client, msg){
+    //enviar msg
+    client.sendText(user, msg)
+    .then((result) => {
+      //console.log('Sucesso ao enviar mensagem: ', result);
+    })
+    .catch((erro) => {
+      console.error('Erro ao enviar mensagem: ', erro);
+    });
 }
 
 function getStage(user) {
@@ -47,16 +66,3 @@ function getStage(user) {
   }
 }
 
-function sendMessageUser(user, client, msg, sendOptionsMessage){
-//Percorre o array para enviar msgs separadas
-  msg.forEach( item => {
-    //enviar msg
-      client.sendText(user, item.texto)
-      .then((result) => {
-        //console.log('Sucesso ao enviar mensagem: ', result);
-      })
-      .catch((erro) => {
-        console.error('Erro ao enviar mensagem: ', erro);
-      });
-  } );
-}

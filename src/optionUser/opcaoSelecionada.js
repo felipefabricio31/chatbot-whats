@@ -18,7 +18,8 @@ function execute(user, msg) {
 
     //Escolher item do menu
     banco.db[user].stage = 6;
-    
+    console.log("Opção 1 --> ", msg);
+
     return arrayMsgRetorno;
   }
 
@@ -62,8 +63,6 @@ function execute(user, msg) {
 
     return arrayMsgRetorno;
   }
-
-  return banco.db[user].stage = 2;
 }
 
 exports.execute = execute;

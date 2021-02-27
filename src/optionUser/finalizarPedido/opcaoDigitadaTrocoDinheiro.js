@@ -12,7 +12,7 @@ function execute(user, msg) {
   }
   else
   {
-    banco.db[user].troco = util.metodos.removerAcento(msg);
+    banco.db[user].troco = util.removerAcento(msg);
   }
   
   //finalização do Pedido

@@ -13,7 +13,7 @@ function execute(user, msg) {
   }
   else
   {
-    banco.db[user].observacao = util.metodos.removerAcento(msg);
+    banco.db[user].observacao = util.removerAcento(msg);
   }
   
   let textoFp = textoFormaPag.textoFormaPagamento(user, msg);

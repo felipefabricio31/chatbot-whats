@@ -1,3 +1,5 @@
+const banco = require("./banco");
+
 function removerAcento (text)
 {       
     text = text.toUpperCase();                                                         
@@ -19,5 +21,15 @@ function validarQtdCaracteres (numeroCaracteres, texto)
     return true;                 
 }
 
+function getStageBanco(user){
+    return banco.db[user].stage;
+}
 
-exports.metodos = {removerAcento, validarQtdCaracteres};
+function setStageBanco(user, stage){
+    banco.db[user].stage = stage;
+    return stage;
+}
+
+
+
+module.exports = {removerAcento, validarQtdCaracteres, getStageBanco, setStageBanco};
