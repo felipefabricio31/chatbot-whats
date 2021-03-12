@@ -9,6 +9,8 @@ function execute(user, msg) {
   addQtd += "*#* - Para voltar ao menu anterior"
 
   let arrayMsgRetorno = [];
+  arrayMsgRetorno.push({stage: 5});
+
   arrayMsgRetorno.push({texto: addQtd});
 
 
@@ -18,7 +20,7 @@ function execute(user, msg) {
   banco.db[user].produtoEscolhido = msg;
   
   //Altera o estado para o menu de opções
-  banco.db[user].stage = 5;
+  // banco.db[user].stage = 5;
 
   return arrayMsgRetorno;
 }

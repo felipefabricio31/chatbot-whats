@@ -3,6 +3,8 @@ const opcoesMenu = require("./opcoesMenu");
 
   function execute(user, msg) {
     let arrayMsgRetorno = [];
+
+    arrayMsgRetorno.push({stage: 3});
     
     //Lista todos os produtos do carrinho
     let resumoCarrinho = resumoCarrinhoBD(user, msg);
@@ -15,7 +17,7 @@ const opcoesMenu = require("./opcoesMenu");
     arrayMsgRetorno.push({texto:listaOpcoes});
 
     //Altera o estado para o menu de opções
-    banco.db[user].stage = 3;
+    //banco.db[user].stage = 3;
 
     return arrayMsgRetorno;
   }

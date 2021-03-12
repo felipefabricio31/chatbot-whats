@@ -11,15 +11,15 @@ function execute(user, msg) {
 
   //Deseja visualizar o cardápio para adicionar novos itens?
   if (msg === "1") {
-    let menus = menu.execute(user, msg);
     
     let arrayMsgRetorno = [];
+    arrayMsgRetorno.push({stage: 6});
+
+    let menus = menu.execute(user, msg);
     arrayMsgRetorno.push({texto: menus});
 
     //Escolher item do menu
-    banco.db[user].stage = 6;
-    console.log("Opção 1 --> ", msg);
-
+    //banco.db[user].stage = 6;
     return arrayMsgRetorno;
   }
 

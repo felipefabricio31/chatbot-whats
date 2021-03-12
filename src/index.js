@@ -14,7 +14,7 @@ bot
 function start(client) {
   client.onMessage(async (message) =>  {
 
-    console.log("MESSAGE (line 17) -->> ", message);
+    //console.log("MESSAGE (line 17) -->> ", message);
 
     if(message.isGroupMsg === false)
     {
@@ -24,14 +24,12 @@ function start(client) {
         message.sender.name
       );
 
-      console.log("RESP --> ", resp);
+      //console.log("RESP --> ", resp);
 
       //Percorre o array para enviar msgs separadas
       await resp.forEach( item => {
-        sendMessageUser("5511946460955@c.us", client, item.texto);
+        sendMessageUser(message.from, client, item.texto);
       } );
-
-      message.body = "AAAAA";
 
       util.setStageBanco(message.from, resp[0].stage);
     }

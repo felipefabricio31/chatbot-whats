@@ -24,7 +24,6 @@ const resumoPedido = require("./resumoPedido");
 
       //Add item ao array
       arrayMsgRetorno.push({texto: msgRetorno});
-
       return arrayMsgRetorno;
     }
 
