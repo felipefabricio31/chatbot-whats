@@ -1,21 +1,23 @@
 const banco = require("../../banco");
 
 function Observacao(user, msg) {
-    let opcaoDesejada = "\n \n----------------------------------------------\n";
+    let arrayMsgRetorno = [];
+    //OpcaoSelecionadaAlterarPedido.js
+    //arrayMsgRetorno.push({stage: 13});
+    
+    let voltarMenu = `*Para voltar ao menu anterior digite #*`;
+    arrayMsgRetorno.push({texto:voltarMenu});
 
-    opcaoDesejada += `*- Para incluir alguma observação ao seu pedido, por exemplo, _"lanche sem salada"_ é só digitar a observação e enviar:*\n\n`;
+    let textoPularOpcao = `*Para pular esta etapa, digite: 1*\n`;
+    arrayMsgRetorno.push({texto: textoPularOpcao});
 
-    opcaoDesejada += `*- Para pular esta etapa,* digite: *1*\n`;
-
-    opcaoDesejada += "\n----------------------------------------------\n";
-
-    opcaoDesejada += `*- Deseja voltar ao menu anterior❓*
-    Digite: *#* \n`;
+    let textoOpcaoDesejada = `*Para incluir alguma observação ao seu pedido,* \n *por exemplo, _"lanche sem salada"_ é só digitar a observação e enviar:*`;
+    arrayMsgRetorno.push({texto: textoOpcaoDesejada});
 
     //observacaoDigitada.js
-    banco.db[user].stage = 13;
+    //banco.db[user].stage = 13;
     
-    return [opcaoDesejada];
+    return arrayMsgRetorno;
 }
 
 exports.textoObservacao = Observacao;

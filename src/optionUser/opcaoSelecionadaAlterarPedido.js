@@ -37,8 +37,6 @@ function execute(user, msg) {
 
   let qtdItensDepoisRemocao = banco.db[user].itens.length;
 
-  //Retorna o resumo e a lista de opções do menu
-  let resumoCarrinho = resumoPedido.execute(user, msg);
   let msgRemocao = '';
 
   if(qtdItensAntesRemocao > qtdItensDepoisRemocao){
@@ -51,6 +49,11 @@ function execute(user, msg) {
 
   //Add item ao array
   arrayMsgRetorno.push({texto:msgRemocao});
+  
+  //Retorna o resumo e a lista de opções do menu
+  let resumoCarrinho = resumoPedido.execute(user, msg);
+  //Add item ao array
+  arrayMsgRetorno.push({texto:resumoCarrinho});
 
   return arrayMsgRetorno;
 }

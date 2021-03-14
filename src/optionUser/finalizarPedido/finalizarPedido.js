@@ -3,6 +3,9 @@ const resumoPedido = require("../resumoPedido");
 
 function execute(user, msg) {
     let arrayMsgRetorno = [];
+    
+    //informarEndereco.js
+    arrayMsgRetorno.push({stage: 11});
 
     // //lista todos os produtos que estão no carrinho
     // let resumo = resumoPedido.resumoCarrinhoBD(user, msg);
@@ -14,18 +17,14 @@ function execute(user, msg) {
     Bairro:
     Número:
     Cidade(opcional):
-    Cep(Opcional)\n`;
-
-    opcaoDesejada += "\n----------------------------------------------\n";
-
-    opcaoDesejada += `*- Deseja voltar ao menu anterior❓*
-    Digite: *#* \n`;
-
-    //informarEndereco.js
-    arrayMsgRetorno.push({stage: 11});
+    Cep:\n`;
 
     //Add item ao array
     arrayMsgRetorno.push({texto:opcaoDesejada});
+    
+    let voltarMenu = `*Para voltar ao menu anterior digite #*`;
+    //Add item ao array
+    arrayMsgRetorno.push({texto:voltarMenu});
 
       //informarEndereco.js
       //banco.db[user].stage = 11;

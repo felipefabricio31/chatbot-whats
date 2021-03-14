@@ -44,7 +44,7 @@ function execute(user, msg) {
   arrayMsgRetorno.push({texto:listaOpcoes});
 
   //Apresenta a msg de item adicionado ao carrinho
-  let addItem = `*🎉Adicionei _Qtd: ${msg} - ${descricaoProduto}_ ao seu carrinho 🎉* \n`;
+  let addItem = `*🎉Adicionamos _${msg} - ${descricaoProduto}_ ao seu carrinho 🎉* \n`;
   
   //Add item ao array
   arrayMsgRetorno.push({texto:addItem});
