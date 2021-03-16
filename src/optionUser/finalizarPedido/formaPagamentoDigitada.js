@@ -5,12 +5,14 @@ const agradecimentos = require("../agradecimentos");
 const banco = require("../../banco");
 
 function execute(user, msg) {
-
+  let arrayMsgRetorno = [];
+  
   //Voltar para o menu anterior
   if(msg === '#' || msg === '*')
   {
     banco.db[user].formaPagamento = '';
-    return resumoPedido.execute(user, msg);;
+    arrayMsgRetorno = resumoPedido.execute(user, msg);
+    return arrayMsgRetorno;
   }
   else
   {
@@ -28,20 +30,26 @@ function execute(user, msg) {
   if(msg === '3')
   {
     //chamar opcao para digitar troco
-    return textoTroco.textoDinheiroTroco(user, msg);
+    arrayMsgRetorno = textoTroco.textoDinheiroTroco(user, msg);
+    return arrayMsgRetorno;
   }
+
+  arrayMsgRetorno.push({stage: 0});
 
   //finalização do Pedido
   let resumoCompleto = resumoPedido.resumoCarrinhoCompleto(user, msg);
+  arrayMsgRetorno.push({texto: resumoCompleto});
+  
   let textAgradecimentos = agradecimentos.agradecimentos(user, msg);
+  arrayMsgRetorno.push({texto: textAgradecimentos});
 
   //Limpa os itens do banco
   banco.db[user].itens = [];
   //boas vindas (inicio do processo)
-  banco.db[user].stage = 0;
+  //banco.db[user].stage = 0;
 
   //retornar forma de pagamento
-  return [resumoCompleto + textAgradecimentos];
+  return arrayMsgRetorno;
 }
 
 exports.execute = execute;

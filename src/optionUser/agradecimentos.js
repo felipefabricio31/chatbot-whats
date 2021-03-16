@@ -2,7 +2,7 @@ const infoCliente = require("../informacoesCliente");
 
 function agradecimentos(user, msg) {
 
-    let fim = 
+let fim = 
 `Tchauu!  Adorei falar com você, aguardo ansioso você me chamar novamente, 🙃
 Quando sentir fome lembre-se de mim HAHA' I love u ♥
   

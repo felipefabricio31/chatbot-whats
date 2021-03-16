@@ -1,21 +1,14 @@
 const banco = require("../banco");
 
 function execute(user, msg) {
-
-  let addQtd = `*Digite a quantidade para continuar:* \n\n`;
-
-  addQtd += `----------------------------------------------\n`;
-
-  addQtd += "*#* - Para voltar ao menu anterior"
-
   let arrayMsgRetorno = [];
   arrayMsgRetorno.push({stage: 5});
 
+  let addQtd = `*Digite a quantidade para continuar:*`;
   arrayMsgRetorno.push({texto: addQtd});
-
-
-  // arrayMsgRetorno.push({texto: "*Digite a quantidade para continuar:*"});
-  // arrayMsgRetorno.push({texto: "*#* - Para voltar ao menu anterior"});
+  
+  let voltarMenu = `*Para voltar ao menu anterior digite #*`;
+  arrayMsgRetorno.push({texto:voltarMenu});
 
   banco.db[user].produtoEscolhido = msg;
   

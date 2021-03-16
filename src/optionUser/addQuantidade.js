@@ -15,12 +15,12 @@ function execute(user, msg) {
   //isNaN para saber se a string contém somente números, se for falso significa que é um número:
   if(isNaN(msg))
   {
-    let codigoInvalido = `*Digito inválido* 😭. Por favor, *digite um número* para adicionar o produto ao seu carrinho.😭
-  
-    -----------------------------------------------------
-  
-    *#* - Para voltar ao menu anterior`;
+    arrayMsgRetorno.push({stage: 5});
 
+    let voltarMenu = `*Para voltar ao menu anterior digite #*`;
+    arrayMsgRetorno.push({texto:voltarMenu});
+
+    let codigoInvalido = `*Digito inválido* 😭. Por favor, *digite o código do produto* para adicionar ao seu carrinho.😭`;
     arrayMsgRetorno.push({texto:codigoInvalido});
 
     return arrayMsgRetorno;
@@ -44,7 +44,7 @@ function execute(user, msg) {
   arrayMsgRetorno.push({texto:listaOpcoes});
 
   //Apresenta a msg de item adicionado ao carrinho
-  let addItem = `*🎉Adicionamos _${msg} - ${descricaoProduto}_ ao seu carrinho 🎉* \n`;
+  let addItem = `🎉Adicionamos *_${msg} - ${descricaoProduto}_* ao seu carrinho 🎉 \n`;
   
   //Add item ao array
   arrayMsgRetorno.push({texto:addItem});

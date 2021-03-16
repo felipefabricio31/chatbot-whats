@@ -1,17 +1,21 @@
 const banco = require("../../banco");
 
 function textoDinheiroTroco(user, msg) {
-    let textoTroco = `*- Troco pra quanto?*\n\n`;
-
-    textoTroco += "\n----------------------------------------------\n";
-
-    textoTroco += `*- Deseja voltar ao menu anterior❓*
-    Digite: *#* \n`;
+    let arrayMsgRetorno = [];
 
     //opcaoDigitadaTrocoDinheiro.js
-    banco.db[user].stage = 17;
+    arrayMsgRetorno.push({stage: 17});
+
+    let textoTroco = `*Troco pra quanto❓*`;
+    arrayMsgRetorno.push({texto: textoTroco});
+
+    let voltarMenu = `*Para voltar ao menu anterior digite #*`;
+    arrayMsgRetorno.push({texto:voltarMenu});
+
+    //opcaoDigitadaTrocoDinheiro.js
+    //banco.db[user].stage = 17;
     
-    return [textoTroco];
+    return arrayMsgRetorno;
 }
 
 exports.textoDinheiroTroco = textoDinheiroTroco;

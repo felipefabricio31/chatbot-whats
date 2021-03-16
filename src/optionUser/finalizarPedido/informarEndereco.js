@@ -6,9 +6,6 @@ const banco = require("../../banco");
 function execute(user, msg) 
 {
   let arrayMsgRetorno = [];
-    
-  //informarEndereco.js
-  //arrayMsgRetorno.push({stage: 11});
 
   let numeroCaracteresMinimoEndereco = 15;
   //inicializa
@@ -26,6 +23,8 @@ function execute(user, msg)
   let campoValido = util.validarQtdCaracteres(numeroCaracteresMinimoEndereco, msg);
   if(!campoValido)
   {
+    arrayMsgRetorno.push({stage: 11});
+
     let msgErro = '*_Endereço inválido, você precisa informar um endereço com mais de 15 caracteres. Por favor, digite novamente._*';
     arrayMsgRetorno.push({texto: msgErro});
     return arrayMsgRetorno;
@@ -34,12 +33,8 @@ function execute(user, msg)
   //OpcaoSelecionadaAlterarPedido.js
   arrayMsgRetorno.push({stage: 13});
 
-  //Separar em outra msg
-  //Retorna o texto da observação
-  arrayMsgRetorno = observacao.textoObservacao(user, msg);
-
   //Retorna o resumo e a lista de opções do menu
-  let resumoCarrinho = resumoPedido.resumoCarrinhoBD(user, msg);
+  let resumoCarrinho = resumoPedido.resumoCarrinhoBD(user, msg);  
   
   let endereco = "\n *Endereço:* ";
   endereco += util.removerAcento(msg);
@@ -48,9 +43,12 @@ function execute(user, msg)
 
   arrayMsgRetorno.push({texto: resumoCarrinho + endereco});
   
+  //Retorna o texto da observação
+  let array = observacao.textoObservacao(user, msg);
+  array.forEach(item => {
+    arrayMsgRetorno.push({texto: item.texto});
+  })
   
-  console.log("Fim informar endereco");
-
   return arrayMsgRetorno;
 }
 

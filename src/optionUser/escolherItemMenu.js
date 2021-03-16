@@ -3,8 +3,6 @@ const addProdutoCarrinho = require("./addProdutoCarrinho");
 const resumoPedido = require("./resumoPedido");
 
   function execute(user, msg) {
-
-    console.log("Opcao selecionada (escolherItemMenu)", msg);
     let arrayMsgRetorno = [];
 
     if(msg === "#" || msg === "*"){
@@ -16,14 +14,17 @@ const resumoPedido = require("./resumoPedido");
     //isNaN para saber se a string contém somente números, se for falso significa que é um número:
     if(isNaN(msg))
     {
-      let msgRetorno = `*Digito inválido*. Por favor, *digite umas das opções listadas* para adicionar o item ao seu carrinho.😭
-    
-      --------------------------------------------------------
-    
-      *#* - Deseja voltar ao menu anterior 🥺`;
+      //informarEndereco.js
+      arrayMsgRetorno.push({stage: 6});
 
+      let msgRetorno = `*Digito inválido*. Por favor, *digite umas das opções listadas* para adicionar o item ao seu carrinho.😭`;
       //Add item ao array
       arrayMsgRetorno.push({texto: msgRetorno});
+    
+      let voltarMenu = `*Para voltar ao menu anterior digite #*`;
+      //Add item ao array
+      arrayMsgRetorno.push({texto:voltarMenu});
+
       return arrayMsgRetorno;
     }
 

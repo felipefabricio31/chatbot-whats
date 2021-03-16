@@ -11,8 +11,8 @@ bot
     console.log(erro);
   });
 
-function start(client) {
-  client.onMessage(async (message) =>  {
+function start(client)  {
+  client.onMessage((message) =>  {
 
     //console.log("MESSAGE (line 17) -->> ", message);
 
@@ -27,8 +27,8 @@ function start(client) {
       //console.log("RESP --> ", resp);
 
       //Percorre o array para enviar msgs separadas
-      await resp.forEach( item => {
-        sendMessageUser(message.from, client, item.texto);
+      resp.forEach( async item =>  {
+        await sendMessageUser(message.from, client, item.texto);
       } );
 
       util.setStageBanco(message.from, resp[0].stage);

@@ -4,21 +4,23 @@ const util = require("../../util");
 const banco = require("../../banco");
 
 function execute(user, msg) {
-  
+  let arrayMsgRetorno = [];
+
   //Voltar para o menu anterior
   if(msg === '1' || msg === '#' || msg === '*')
   {
     banco.db[user].observacao = '';
-    return resumoPedido.execute(user, msg);
+    arrayMsgRetorno = resumoPedido.execute(user, msg);
+    return arrayMsgRetorno;
   }
   else
   {
     banco.db[user].observacao = util.removerAcento(msg);
   }
   
-  let textoFp = textoFormaPag.textoFormaPagamento(user, msg);
+  arrayMsgRetorno = textoFormaPag.textoFormaPagamento(user, msg);
 
-  return textoFp;
+  return arrayMsgRetorno;
 }
 
 exports.execute = execute;

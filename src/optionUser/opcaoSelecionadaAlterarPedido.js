@@ -14,14 +14,16 @@ function execute(user, msg) {
 
   // //Apresenta o pedido para conferência
   if (banco.db[user].itens[msg] === undefined) {
-    let codInvalido = `*Código inválido*. Por favor, *digite umas das opções listadas* para remover o item do seu carrinho. 😭
     
-    ---------------------------------------------------
+    arrayMsgRetorno.push({stage: 4});
 
-    *#* - Para voltar ao menu anterior🥺*`;
-
+    let codInvalido = `*Código inválido*. Por favor, *digite umas das opções listadas* para remover o item do seu carrinho. 😭`;
     //Add item ao array
     arrayMsgRetorno.push({texto:codInvalido});
+    
+    let voltarMenu = `*Para voltar ao menu anterior digite #*`;
+    //Add item ao array
+    arrayMsgRetorno.push({texto:voltarMenu});
 
     return arrayMsgRetorno;
   }

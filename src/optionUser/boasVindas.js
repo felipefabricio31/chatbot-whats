@@ -16,7 +16,7 @@ function execute(user, msg, contato) {
   *6* - Para falar com um de nossos atendentes 📱
   
   *_Sua FOME não espera e eu também estou muito ansioso para montar seu pedido, então digite á opção desejada e te aguardo nos próximos passos..._* 😎❤️ 
-      `});
+  `});
 
   return arrayMsgRetorno;
 }
